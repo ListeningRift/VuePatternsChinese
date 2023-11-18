@@ -27,13 +27,13 @@ export default {
 
 除了上面这种使用普通 JavaScript 对象创建组件的方式以外，最普遍的方式就是单文件组件（SFC）写法。单文件组件就是把 HTML，CSS 和 JS 都写在一个 `.vue` 文件里，就像这样：
 
-```vue
+```html
 <template>
   <h1>Hello, my name is {{ name }}</h1>
 </template>
 
 <script setup>
-const { name } = defineProps(["name"]);
+  const { name } = defineProps(["name"]);
 </script>
 ```
 
@@ -48,7 +48,7 @@ const { name } = defineProps(["name"]);
 
 这个组件可以像下面这样实现：
 
-```vue
+```html
 <template>
   <div class="Tweet">
     <image class="Tweet-image" :src="image.imageUrl" :alt="image.description" />
@@ -65,7 +65,7 @@ const { name } = defineProps(["name"]);
 </template>
 
 <script setup>
-// ...
+  // ...
 </script>
 ```
 
@@ -79,19 +79,19 @@ const { name } = defineProps(["name"]);
 
 我们可以先创建 `TweetAvatar` 组件，其中包含一个头像图片元素。
 
-```vue
+```html
 <template>
   <image class="Avatar" :src="author.avatarUrl" :alt="author.name" />
 </template>
 
 <script setup>
-// ...
+  // ...
 </script>
 ```
 
 创建一个 `TweetUser` 组件，渲染出 `TweetAvatar` 组件和一些相关的用户信息。
 
-```vue
+```html
 <template>
   <div class="User">
     <TweetAvatar />
@@ -100,13 +100,13 @@ const { name } = defineProps(["name"]);
 </template>
 
 <script setup>
-import { TweetAvatar } from "./TweetAvatar.vue";
+  import { TweetAvatar } from "./TweetAvatar.vue";
 </script>
 ```
 
 创建一个 `TweetDetails` 组件，渲染出推特的其他信息。
 
-```vue
+```html
 <template>
   <div class="Details">
     <div class="Tweet-text">{{ text }}</div>
@@ -116,13 +116,13 @@ import { TweetAvatar } from "./TweetAvatar.vue";
 </template>
 
 <script setup>
-// ...
+  // ...
 </script>
 ```
 
 最后，最后我们可以使用新创建的几个组件简化 `Tweet` 父组件的模板内容。
 
-```vue
+```html
 <template>
   <div class="Tweet">
     <image class="Tweet-image" :src="image.imageUrl" :alt="image.description" />
@@ -132,7 +132,7 @@ import { TweetAvatar } from "./TweetAvatar.vue";
 </template>
 
 <script setup>
-// ...
+  // ...
 </script>
 ```
 
@@ -144,7 +144,7 @@ import { TweetAvatar } from "./TweetAvatar.vue";
 
 在 Vue 中，我们可以使用 `ref()` 方法（用于基础数据类型）和 `reactive()` 方法（用于复合数据类型）来定义一个响应式数据，让我们看看一个计数组件的简单例子。
 
-```vue
+```html
 <template>
   <div>
     <h2>Counter: {{ count }}</h2>
@@ -154,17 +154,17 @@ import { TweetAvatar } from "./TweetAvatar.vue";
 </template>
 
 <script setup>
-import { ref } from "vue";
+  import { ref } from "vue";
 
-const count = ref(0);
+  const count = ref(0);
 
-const increment = () => {
-  count.value++;
-};
+  const increment = () => {
+    count.value++;
+  };
 
-const decrement = () => {
-  count.value--;
-};
+  const decrement = () => {
+    count.value--;
+  };
 </script>
 ```
 
